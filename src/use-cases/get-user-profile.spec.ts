@@ -7,7 +7,7 @@ import { GetUserProfileUseCase } from './get-user-profile.service'
 let usersRepository: InMemoryUsersRepository
 let sut: GetUserProfileUseCase
 
-describe('Register Use Case', () => {
+describe('Get User Profile Use Case', () => {
   beforeEach(() => {
     usersRepository = new InMemoryUsersRepository()
     sut = new GetUserProfileUseCase(usersRepository)
@@ -28,7 +28,7 @@ describe('Register Use Case', () => {
   })
 
   it('should not be able to get user profile with wrong id', async () => {
-    expect(() =>
+    await expect(() =>
       sut.execute({
         userId: 'non-existing-id',
       }),
